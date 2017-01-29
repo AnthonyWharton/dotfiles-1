@@ -195,7 +195,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # class                 border  backgr. text    indicator child_border
-client.focused          #0087D7 #0087D7 #0087D7 #0087D7   #0087D7
+client.focused          #FF5F00 #FF5F00 #FF5F00 #FF5F00 #FF5F00
 client.focused_inactive #00000000 #00000000 #00000000 #00000000 #00000000
 client.unfocused        #00000000 #00000000 #00000000 #00000000 #00000000 
 client.urgent           #00000000 #00000000 #00000000 #00000000 #00000000
