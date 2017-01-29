@@ -9,7 +9,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #2D2D2D 
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -50,7 +50,8 @@ modules-left = i3
 modules-center = mpd
 modules-right = volume memory cpu wlan eth temperature date powermenu
 
-;tray-position = right
+tray-position = right
+tray-maxsize = 0
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -254,10 +255,8 @@ type = internal/date
 interval = 1
 
 date = %Y-%m-%d
-date-alt = " %Y-%m-%d"
 
 time = %H:%M:%S
-time-alt = %H:%M:%S
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
