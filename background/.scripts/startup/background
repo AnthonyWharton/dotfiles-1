@@ -1,0 +1,5 @@
+#!/bin/bash
+MONTH=$(date -d "$D" '+%m')
+monthnames=(invalid january february march april may june july august september october november december)
+MONTHNAME=${monthnames[${MONTH}]}
+feh --bg-fill ~/Pictures/Wallpapers/$MONTHNAME.jpg
