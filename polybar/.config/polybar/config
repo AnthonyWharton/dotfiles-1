@@ -8,12 +8,12 @@
 ;=====================================================
 
 [colors]
-background = £BACKGROUND
-background-alt = £BACKGROUND-ALT
-foreground = £TEXT
-foreground-alt =£TEXT-ALT
-primary = £PRIMARY
-secondary = £CONTRAST
+background = #BACKGROUND
+background-alt = #BACKGROUND-ALT
+foreground = #TEXT
+foreground-alt = #TEXT-ALT
+primary = #PRIMARY
+secondary = #CONTRAST
 
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
