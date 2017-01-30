@@ -1,0 +1,28 @@
+#!/bin/bash
+
+background =       "#2D2D2D"
+background-alt =   "#444444"
+text =             "#FFFFFF"
+text-alt =         "#B5B5B5"
+primary =          "#FF5F00"
+contrast =         "#0087D7"
+
+#£BACKGROUND
+#£BACKGROUND-ALT
+#
+#£TEXT
+#£TEXT-ALT
+#
+#£PRIMARY
+#£CONTRAST
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
+cd $DIR/../..
+sed -i 's/£BACKGROUND/$background/g'
+sed -i 's/£BACKGROUND-ALT/$background-alt/g'
+
+sed -i 's/£TEXT/$text/g'
+sed -i 's/£TEXT-ALT/$text-alt/g'
+
+sed -i 's/£PRIMARY/$primary/g'
+sed -i 's/£CONTRAST/$contrast/g'
