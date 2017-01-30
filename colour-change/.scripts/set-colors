@@ -7,6 +7,9 @@ textalt="#B5B5B5"
 primary="#FF5F00"
 contrast="#0087D7"
 
+terminalbackground=$(./colortrans.py "$background")
+echo $terminalbackground
+
 #£BACKGROUND
 #£BACKGROUND-ALT
 #
