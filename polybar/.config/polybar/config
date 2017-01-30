@@ -8,14 +8,12 @@
 ;=====================================================
 
 [colors]
-;background = ${xrdb:color0:#222}
-background = #2D2D2D 
-background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #dfdfdf
-foreground-alt = #555
-primary = #FF5F00
-secondary = #0087D7
+background = £BACKGROUND
+background-alt = £BACKGROUND-ALT
+foreground = £TEXT
+foreground-alt =£TEXT-ALT
+primary = £PRIMARY
+secondary = £CONTRAST
 
 [bar/main]
 ;monitor = ${env:MONITOR:HDMI-1}
