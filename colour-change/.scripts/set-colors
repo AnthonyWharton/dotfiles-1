@@ -18,10 +18,10 @@ contrast="#0087D7"
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 cd $DIR/../..
-find ./ -type f -exec sed -i 's/$background/$background/g' {} \;
-find ./ -type f -exec sed -i 's/$background-ALT/$backgroundalt/g' {} \;
-find ./ -type f -exec sed -i 's/$text/$text/g' {} \;
-find ./ -type f -exec sed -i 's/$text-ALT/$textalt/g' {} \;
-find ./ -type f -exec sed -i 's/$primary/$primary/g' {} \;
-find ./ -type f -exec sed -i 's/$contrast/$contrast/g' {} \;
+find ./ -type f -exec sed -i "s/#BACKGROUND/$background/g" {} \;
+find ./ -type f -exec sed -i "s/#B-ALT/$backgroundalt/g" {} \;
+find ./ -type f -exec sed -i "s/#TEXT/$text/g" {} \;
+find ./ -type f -exec sed -i "s/#T-ALT/$textalt/g" {} \;
+find ./ -type f -exec sed -i "s/#PRIMARY/$primary/g" {} \;
+find ./ -type f -exec sed -i "s/#CONTRAST/$contrast/g" {} \;
 cd $DIR

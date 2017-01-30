@@ -9,9 +9,9 @@
 
 [colors]
 background = #BACKGROUND
-background-alt = #BACKGROUND-ALT
+background-alt = #B-ALT
 foreground = #TEXT
-foreground-alt = #TEXT-ALT
+foreground-alt = #T-ALT
 primary = #PRIMARY
 secondary = #CONTRAST
 
