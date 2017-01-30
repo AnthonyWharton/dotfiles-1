@@ -198,10 +198,10 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #PRIMARY #PRIMARY #PRIMARY #PRIMARY #PRIMARY
-client.focused_inactive #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND
-client.unfocused        #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND 
-client.urgent           #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND
-client.placeholder      #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND #BACKGROUND
+client.focused_inactive #00000000 #00000000 #00000000 #00000000 #00000000
+client.unfocused        #00000000 #00000000 #00000000 #00000000 #00000000
+client.urgent           #00000000 #00000000 #00000000 #00000000 #00000000
+client.placeholder      #00000000 #00000000 #00000000 #00000000 #00000000
 
 gaps inner 30
 workspace $ws7 gaps inner 0
