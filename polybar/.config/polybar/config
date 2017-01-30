@@ -315,7 +315,7 @@ thermal-zone = 2
 warn-temperature = 70
 
 format = <ramp> <label>
-format-underline = #f50a4d
+format-underline = ${colors.primary}
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
 
