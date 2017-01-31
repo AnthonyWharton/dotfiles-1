@@ -333,34 +333,27 @@ type = custom/menu
 
 format-spacing = 1
 
-label-open = Power
+label-open = Menu
 label-open-foreground = ${colors.foreground}
 label-close = Cancel
 label-close-foreground = ${colors.foreground}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = Reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = Power Off
+
+menu-0-0 = Tray
+menu-0-0-exec = polybar tray & 
+menu-0-1 = Power
 menu-0-1-exec = menu-open-2
-menu-0-2 = Hibernate
-menu-0-2-exec = menu-open-3
 
 menu-1-0 = Cancel
 menu-1-0-exec = menu-open-0
 menu-1-1 = Reboot
 menu-1-1-exec = sudo reboot
-
-menu-2-0 = Power Off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = Cancel
-menu-2-1-exec = menu-open-0
-
-menu-3-0 = Hibernate
-menu-3-0-exec = sudo pm-hibernate
-menu-3-1 = Cancel
-menu-3-1-exec = menu-open-0
+menu-1-2 = Poweroff
+menu-1-2-exec = sudo poweroff
+menu-1-3 = Hibernate
+menu-1-3-exec = sudo pm-hibernate
 
 [settings]
 screenchange-reload = true
@@ -372,5 +365,61 @@ screenchange-reload = true
 [global/wm]
 margin-top = 10
 margin-bottom = 5
+
+; vim:ft=dosini
+
+[bar/tray]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 5%
+height = 32
+offset-x = 95%
+offset-y = 32
+radius = fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 4
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Source Code Pro:pixelsize=20;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=14;0
+
+modules-left = blank
+modules-center =
+modules-right = 
+tray-position = right
+
+;tray-maxsize = 0
+;tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[module/blank]
+type = custom/script
+exec = echo "close"
+interval = 99
 
 ; vim:ft=dosini
