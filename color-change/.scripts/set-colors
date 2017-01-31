@@ -6,6 +6,7 @@ text="#D4D4D4"
 textalt="#B5B5B5"
 primary="#FFA726"
 contrast="#6BA4E7"
+wallpaper="wave.jpg"
 
 terminalbackground=$(./colortrans.py "$background")
 terminalbackgroundalt=$(./colortrans.py "$backgroundalt")
@@ -25,6 +26,7 @@ terminalcontrast=$(./colortrans.py "$contrast")
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}"  )" && pwd  )"
 cd $DIR/../..
+find ./ -type f -exec sed -i "s/#WALLPAPER/$wallpaper/g" {} \;
 find ./ -type f -exec sed -i "s/#BACKGROUND/$background/g" {} \;
 find ./ -type f -exec sed -i "s/#B-ALT/$backgroundalt/g" {} \;
 find ./ -type f -exec sed -i "s/#TEXT/$text/g" {} \;
