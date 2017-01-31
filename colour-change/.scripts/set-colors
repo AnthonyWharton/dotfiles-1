@@ -38,3 +38,4 @@ find ./ -type f -exec sed -i "s/#TERMT-ALT/$terminaltextalt/g" {} \;
 find ./ -type f -exec sed -i "s/#TERMPRIMARY/$terminalprimary/g" {} \;
 find ./ -type f -exec sed -i "s/#TERMCONTRAST/$terminalcontrast/g" {} \;
 cd $DIR
+./terminal-colors
