@@ -52,8 +52,8 @@ else
     # | ===========================================
 
 
-    [[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="Default"
-    [[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="Default"
+    [[ -z "$PROFILE_NAME" ]] && PROFILE_NAME="Auto-Generated"
+    [[ -z "$PROFILE_SLUG" ]] && PROFILE_SLUG="Auto-Generated"
     [[ -z "$DCONF" ]] && DCONF=dconf
     [[ -z "$UUIDGEN" ]] && UUIDGEN=uuidgen
 
