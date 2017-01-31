@@ -203,7 +203,7 @@ client.unfocused        #00000000 #00000000 #00000000 #00000000 #00000000
 client.urgent           #00000000 #00000000 #00000000 #00000000 #00000000
 client.placeholder      #00000000 #00000000 #00000000 #00000000 #00000000
 
-gaps inner 30
+gaps inner 60
 workspace $ws7 gaps inner 0
 workspace $ws8 gaps inner 0
 workspace $ws9 gaps inner 0
