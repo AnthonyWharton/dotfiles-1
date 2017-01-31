@@ -45,10 +45,10 @@ font-3 = FontAwesome:pixelsize=14;0
 
 modules-left = i3
 modules-center = mpd
-modules-right = volume memory cpu wlan eth temperature date powermenu
+modules-right = volume memory cpu wlan eth temperature date
 
-;tray-position = right
-;tray-maxsize = 0
+tray-position = right
+tray-maxsize = 16
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -328,6 +328,12 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
+[module/button]
+type = custom/script
+exec = echo "Menu"
+interval = 99
+;exec = polybar tray &
+
 [module/powermenu]
 type = custom/menu
 
@@ -370,9 +376,9 @@ margin-bottom = 5
 
 [bar/tray]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 5%
+width = 3.7%
 height = 32
-offset-x = 95%
+offset-x = 97.3%
 offset-y = 32
 radius = fixed-center = false
 
@@ -407,7 +413,7 @@ tray-position = right
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
-;wm-restack = i3
+wm-restack = i3
 
 override-redirect = true
 
@@ -419,7 +425,7 @@ override-redirect = true
 
 [module/blank]
 type = custom/script
-exec = echo "close"
+exec = echo ""
 interval = 99
 
 ; vim:ft=dosini
