@@ -1,11 +1,11 @@
 #!/bin/bash
 
-background="#2D2D2D"
-backgroundalt="#444444"
+background="#404552"
+backgroundalt="#2F343F"
 text="#FFFFFF"
 textalt="#B5B5B5"
-primary="#FF5F00"
-contrast="#0087D7"
+primary="#FFA726"
+contrast="#6BA4E7"
 
 terminalbackground=$(./colortrans.py "$background")
 terminalbackgroundalt=$(./colortrans.py "$backgroundalt")
