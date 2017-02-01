@@ -43,8 +43,8 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 
-modules-left = i3
-modules-center = mpd
+modules-left = i3 media
+modules-center =
 modules-right = volume memory cpu wlan eth temperature date
 
 tray-position = right
@@ -157,6 +157,13 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/media]
+type = custom/script
+exec = ~/.scripts/mediainfo
+interval = 1
+format-underline = ${colors.primary}
+
 
 [module/mpd]
 type = internal/mpd
