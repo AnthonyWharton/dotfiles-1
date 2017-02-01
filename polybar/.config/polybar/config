@@ -118,17 +118,18 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+strip-wsnumbers = true
 
-ws-icon-2 = 1;a
-ws-icon-3 = 2;β
-ws-icon-4 = 3;γ
-ws-icon-5 = 4;δ
-ws-icon-6 = 5;ε
-ws-icon-7 = 6;a
-ws-icon-1 = 7;ζ
-ws-icon-8 = 8;η
-ws-icon-0 = 9;θ
-ws-icon-9 = 10;λ
+;ws-icon-0 = 1;a
+;ws-icon-1 = 2;b
+;ws-icon-2 = 3;γ
+;ws-icon-3 = 4;δ
+;ws-icon-4 = 5;ε
+;ws-icon-5 = 6;a
+;ws-icon-6 = 7;ζ
+;ws-icon-7 = 8;η
+;ws-icon-8 = 9;θ
+;ws-icon-9 = 10;λ
 
 ; Only show workspaces on the same output as the bar
 pin-workspaces = true
@@ -138,23 +139,23 @@ label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %index%
+label-focused = %name%
 label-focused-background = ${module/bspwm.label-focused-background}
 label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %index%
+label-unfocused = %name%
 label-unfocused-padding = ${module/bspwm.label-occupied-padding}
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %index%
+label-visible = %name%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %index%
+label-urgent = %name%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
@@ -203,7 +204,7 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 0.5
+interval = 0.2
 format = <label> <ramp-coreload>
 format-prefix-foreground = ${colors.primary}
 format-underline = ${colors.primary}
