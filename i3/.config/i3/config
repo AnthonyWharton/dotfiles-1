@@ -204,10 +204,10 @@ client.urgent           #00000000 #00000000 #00000000 #00000000 #00000000
 client.placeholder      #00000000 #00000000 #00000000 #00000000 #00000000
 
 gaps inner 60
-workspace $ws7 gaps inner 0
-workspace $ws8 gaps inner 0
-workspace $ws9 gaps inner 0
-workspace $ws10 gaps inner 0
+workspace 7 gaps inner 0
+workspace 8 gaps inner 0
+workspace 9 gaps inner 0
+workspace 10 gaps inner 0
 new_window pixel 5
 hide_edge_borders both
 
