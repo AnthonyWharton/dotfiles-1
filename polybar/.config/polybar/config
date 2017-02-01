@@ -291,7 +291,7 @@ interval = 1
 
 date = %Y-%m-%d
 
-time = %H:%M:%S
+time = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -311,19 +311,20 @@ format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
 
 bar-volume-width = 20
+bar-volume-thickness = 100
 bar-volume-foreground-0 = ${colors.primary} 
 bar-volume-foreground-1 = ${colors.primary}
 bar-volume-foreground-2 = ${colors.primary}
 bar-volume-foreground-3 = ${colors.primary}
 bar-volume-foreground-4 = ${colors.primary}
 bar-volume-foreground-5 = ${colors.primary}
-bar-volume-foreground-6 = ${colors.primary}
+bar-volume-foreground-6 = ${colors.secondary}
 bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator = ┃
 bar-volume-indicator-font = 2
-bar-volume-fill = ─
+bar-volume-fill = ━
 bar-volume-fill-font = 2
-bar-volume-empty = ─
+bar-volume-empty = ━
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
@@ -333,11 +334,11 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = <label-charging>
-format-charging-underline = ${colors.secondary}
+format-charging = BAT <label-charging>
+format-charging-underline = ${colors.primary}
 
-format-discharging = <ramp-capacity>
-format-discharging-underline = ${colors.secondary}
+format-discharging = BAT <ramp-capacity>
+format-discharging-underline = ${colors.primary}
 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${colors.secondary}
@@ -366,39 +367,6 @@ ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
 
-[module/button]
-type = custom/script
-exec = echo "Menu"
-interval = 99
-;exec = polybar tray &
-
-[module/powermenu]
-type = custom/menu
-
-format-spacing = 1
-
-label-open = Menu
-label-open-foreground = ${colors.foreground}
-label-close = Cancel
-label-close-foreground = ${colors.foreground}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-
-menu-0-0 = Tray
-menu-0-0-exec = polybar tray & 
-menu-0-1 = Power
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = Cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = Reboot
-menu-1-1-exec = sudo reboot
-menu-1-2 = Poweroff
-menu-1-2-exec = sudo poweroff
-menu-1-3 = Hibernate
-menu-1-3-exec = sudo pm-hibernate
-
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -409,61 +377,5 @@ screenchange-reload = true
 [global/wm]
 margin-top = 10
 margin-bottom = 5
-
-; vim:ft=dosini
-
-[bar/tray]
-;monitor = ${env:MONITOR:HDMI-1}
-width = 3.7%
-height = 32
-offset-x = 97.3%
-offset-y = 32
-radius = fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 4
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = Source Code Pro:pixelsize=20;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:pixelsize=14;0
-
-modules-left = blank
-modules-center =
-modules-right = 
-tray-position = right
-
-;tray-maxsize = 0
-;tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-wm-restack = i3
-
-override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[module/blank]
-type = custom/script
-exec = echo ""
-interval = 99
 
 ; vim:ft=dosini
