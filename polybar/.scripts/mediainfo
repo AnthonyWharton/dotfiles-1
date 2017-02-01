@@ -1,4 +1,10 @@
 #!/bin/bash
 artist=$(playerctl metadata artist 2>/dev/null)
 title=$(playerctl metadata title 2>/dev/null)
+if [$artist = ""]; then
+    artist="Nobody"
+fi
+if [$title = ""]; then
+    title="Nothing"
+fi
 echo $artist '|' $title
