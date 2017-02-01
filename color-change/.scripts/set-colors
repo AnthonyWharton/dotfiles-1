@@ -4,8 +4,8 @@ background="#404552"
 backgroundalt="#2F343F"
 text="#D4D4D4"
 textalt="#B5B5B5"
-primary="#FFA726"
-contrast="#6BA4E7"
+primary="#FFAF00"
+contrast="#5FAFD7"
 wallpaper="Field.jpg"
 
 terminalbackground=$(./colortrans.py "$background")
