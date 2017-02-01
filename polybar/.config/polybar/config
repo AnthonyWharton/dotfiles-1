@@ -163,6 +163,7 @@ type = custom/script
 exec = ~/.scripts/mediainfo
 interval = 1
 format-underline = ${colors.primary}
+click-left = playerctl play-pause &
 
 
 [module/mpd]
