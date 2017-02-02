@@ -1,4 +1,4 @@
-OLOR_01="#646464"           # HOST
+COLOR_01="#646464"           # HOST
 COLOR_02="#F58E8E"           # SYNTAX_STRING
 COLOR_03="#A9D3AB"           # COMMAND
 COLOR_04="#FED37E"           # COMMAND_COLOR2
