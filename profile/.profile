@@ -22,6 +22,10 @@ if [ -d "$HOME/bin" ] ; then
 fi
 
 
+dbus-update-activation-environment --all
+
+
+
 for SCRIPT in /home/raef/.scripts/startup/*
 do
 	if [ -f $SCRIPT -a -x $SCRIPT ]
@@ -30,10 +34,3 @@ do
 	fi
 done
 
-. /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate
