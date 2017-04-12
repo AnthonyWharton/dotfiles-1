@@ -8,15 +8,15 @@
 ;=====================================================
 
 [colors]
-background = #BACKGROUND
-background-alt = #B-ALT
-foreground = #TEXT
-foreground-alt = #T-ALT
-primary = #PRIMARY
-secondary = #CONTRAST
+background = #404552
+background-alt = #2F343F
+foreground = #D4D4D4
+foreground-alt = #B5B5B5
+primary = #FFAF00
+secondary = #5FAFD7
 
 [bar/main]
-;monitor = ${env:MONITOR:HDMI-1}
+monitor = eDP1
 width = 100%
 height = 32
 ;offset-x = 5%
@@ -38,14 +38,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Source Code Pro:pixelsize=20;1
+font-0 = Source Code Pro:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 
 modules-left = i3 media
 modules-center =
-modules-right = volume memory cpu wlan eth temperature date
+modules-right = volume memory cpu battery wlan eth temperature date
 
 tray-position = right
 tray-maxsize = 16
@@ -251,17 +251,17 @@ bar-used-empty-foreground = ${colors.foreground-alt}
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp2s0
 interval = 3.0
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-underline = ${colors.primary}
 label-connected = %essid%
 
 ;format-disconnected =
 format-disconnected = <label-disconnected>
 format-disconnected-underline = ${colors.secondary}
-label-disconnected = %ifname% DOWN
+label-disconnected = WIFI DOWN
 label-disconnected-foreground = ${colors.foreground-alt}
 
 ;ramp-signal-0 = 
@@ -310,9 +310,9 @@ label-volume-foreground = ${root.foreground}
 
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+label-muted = MUTE
 
-bar-volume-width = 20
+bar-volume-width = 10
 bar-volume-thickness = 100
 bar-volume-foreground-0 = ${colors.primary} 
 bar-volume-foreground-1 = ${colors.primary}
@@ -336,11 +336,17 @@ battery = BAT0
 adapter = ADP1
 full-at = 98
 
-format-charging = BAT <label-charging>
-format-charging-underline = ${colors.primary}
+interval = 1
 
-format-discharging = BAT <ramp-capacity>
+time-format = %H:%M
+
+format-charging = CHR <label-charging>
+format-charging-underline = ${colors.primary}
+format-discharging = BAT <label-discharging>
 format-discharging-underline = ${colors.primary}
+
+label-discharging = %percentage%% %time%
+label-charging = %percentage%% %time%
 
 format-full-prefix-foreground = ${colors.foreground-alt}
 format-full-underline = ${colors.secondary}

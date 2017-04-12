@@ -1,9 +1,3 @@
-#!/usr/bin/env bash
-PREVDIR=`pwd`
-cd /opt/xTIMEcomposer/Community_14.2.1/
-source SetEnv
-cd $PREVDIR
-
 # Path to the bash it configuration
 export BASH_IT="/home/raef/.bash_it"
 
@@ -30,18 +24,21 @@ export TODO="t"
 # Set this to false to turn off version control status checking within the prompt for all themes
 export SCM_CHECK=true
 
+# Set Xterm/screen/Tmux title with only a short hostname.
+# Uncomment this (or set SHORT_HOSTNAME to something else),
+# Will otherwise fall back on $HOSTNAME.
+#export SHORT_HOSTNAME=$(hostname -s)
+
 # Set vcprompt executable path for scm advance info in prompt (demula theme)
-# https://github.com/xvzf/vcprompt
+# https://github.com/djl/vcprompt
 #export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
+
+# (Advanced): Uncomment this to make Bash-it reload itself automatically
+# after enabling or disabling aliases, plugins, and completions.
+# export BASH_IT_AUTOMATIC_RELOAD_AFTER_CONFIG_CHANGE=1
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
+dbus-update-activation-environment --all
 
-. /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate
