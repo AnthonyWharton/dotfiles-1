@@ -43,7 +43,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 
-modules-left = i3 media
+modules-left = i3 pkg media
 modules-center =
 modules-right = volume memory cpu battery wlan eth temperature date
 
@@ -374,6 +374,15 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
+
+[module/pkg]
+type = custom/script
+interval = 1200
+format = <label>
+format-underline = ${colors.primary}
+label = "%output:0:30%"
+exec = .scripts/pkg
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 [settings]
 screenchange-reload = true

@@ -226,7 +226,7 @@ hide_edge_borders both
 #        tray_output DP-4
 #}
 
-exec_always --no-startup-id /home/raef/.config/polybar/launch.sh
+exec_always --no-startup-id /home/raef/.scripts/launch-polybar
 exec --no-startup-id compton -b &
 exec --no-startup-id nm-applet &
 exec --no-startup-id redshift &
