@@ -377,7 +377,6 @@ ramp-foreground = ${colors.foreground-alt}
 
 [module/pkg]
 type = custom/script
-interval = 1200
 interval = 60
 format = <label>
 format-underline = ${colors.primary}
