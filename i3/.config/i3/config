@@ -198,9 +198,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # decrease screen brightness
 
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl --player=google-play-music-desktop-player play-pause
+bindsym XF86AudioNext exec playerctl --player=google-play-music-desktop-player next
+bindsym XF86AudioPrev exec playerctl --player=google-play-music-desktop-player previous
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #FFAF00 #FFAF00 #FFAF00 #FFAF00 #FFAF00
