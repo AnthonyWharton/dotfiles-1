@@ -189,6 +189,8 @@ bindsym $mod+r mode "resize"
 bindsym $mod+t gaps inner current set 0
 bindsym $mod+g gaps inner current set 30
 
+bindsym  Print exec /home/raef/.scripts/screenshot
+
 bindsym $mod+semicolon exec /home/raef/.scripts/lock-xwobf
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
