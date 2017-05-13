@@ -1,10 +1,21 @@
 #!/bin/bash
-artist=$(playerctl --player=google-play-music-desktop-player metadata artist 2>/dev/null)
-title=$(playerctl  --player=google-play-music-desktop-player metadata title 2>/dev/null)
-if [ "$artist" == "" ]; then
-    artist="Nobody"
+artist=$(playerctl --player google-play-music-desktop-player metadata artist 2>/dev/null)
+title=$(playerctl --player google-play-music-desktop-player metadata title 2>/dev/null)
+playing=$(playerctl --player google-play-music-desktop-player status 2>/dev/null)
+if [ "$playing" == "Playing" ]; then
+    if [ "$artist" == "" ]; then
+        artist="Nobody"
+    fi
+    if [ "$title" == "" ]; then
+        title="Nothing"
+    fi
+    echo "%{u#FFAF00 +u}%{F#D4D4D4}$artist %{F#D4D4D4}| %{F#D4D4D4}$title%{-u}"
+else
+    if [ "$artist" == "" ] || [ "$artist" == "(null)" ] ; then
+        artist="Nobody"
+    fi
+    if [ "$title" == "" ] || [ "$title" == "(null)" ] ; then
+        title="Nothing"
+    fi
+    echo "%{u#5FAFD7 +u}%{F#B5B5B5}$artist %{F#D4D4D4}| %{F#B5B5B5}$title%{-u}"
 fi
-if [ "$title" == "" ]; then
-    title="Nothing"
-fi
-echo $artist '|' $title

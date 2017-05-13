@@ -1,4 +1,9 @@
 #!/bin/bash
 pac=$(checkupdates | wc -l)
-aur=$(cower -u | wc -l)
-echo "$pac | $aur"
+aur=$(cower -u 2>/dev/null | wc -l)
+if ping -q -w 2 -c 1 176.34.135.167 > /dev/null 2>&1 ; then
+    echo "%{u#FFAF00 +u}$pac | $aur%{-u}"
+else
+    echo "%{u#5FAFD7 +u}%{F#B5B5B5}? | ?%{-u}"
+fi
+

@@ -16,7 +16,7 @@ primary = #FFAF00
 secondary = #5FAFD7
 
 [bar/main]
-monitor = eDP1
+monitor = eDP-1
 width = 100%
 height = 32
 ;offset-x = 5%
@@ -382,7 +382,6 @@ format = <label>
 format-underline = ${colors.primary}
 label = "%output:0:30%"
 exec = .scripts/pkg
-exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
 
 [settings]
 screenchange-reload = true
