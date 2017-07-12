@@ -17,5 +17,7 @@ set background=dark
 set termguicolors
 colorscheme breezy
 let g:syntastic_haskell_checkers = ['hlint']
+let g:colorizer_auto_color = 1
+let g:colorizer_colornames = 0
 
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()

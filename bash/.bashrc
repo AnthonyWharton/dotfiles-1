@@ -40,5 +40,9 @@ export SCM_CHECK=true
 # Load Bash It
 source $BASH_IT/bash_it.sh
 
+export EDITOR='vim'
+export VISUAL='vim'
+
+
 dbus-update-activation-environment --all
 

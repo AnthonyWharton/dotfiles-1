@@ -1,3 +1,9 @@
 #!/bin/bash
-optirun xwobf -s 32 /tmp/.i3lock.png
-i3lock -u -i /tmp/.i3lock.png
+if pgrep -x "i3lock" > /dev/null
+then
+    echo "Running"
+else
+    echo "Stopped"
+    xwobf -s 32 /tmp/.i3lock.png
+    i3lock -u -i /tmp/.i3lock.png
+fi

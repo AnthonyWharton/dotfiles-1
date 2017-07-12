@@ -15,7 +15,56 @@ foreground-alt = #B5B5B5
 primary = #FFAF00
 secondary = #5FAFD7
 
-[bar/main]
+[bar/docked]
+monitor = DP-2
+width = 100%
+height = 32
+;offset-x = 5%
+;offset-y = 1%
+radius = fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Source Code Pro:pixelsize=20;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=14;0
+
+modules-left = i3 pkg media
+modules-center =
+modules-right = volume memory cpu battery temperature date
+
+tray-position = right
+tray-maxsize = 24
+;tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[bar/roaming]
 monitor = eDP-1
 width = 100%
 height = 32
@@ -45,7 +94,7 @@ font-3 = FontAwesome:pixelsize=14;0
 
 modules-left = i3 pkg media
 modules-center =
-modules-right = volume memory cpu battery wlan eth temperature date
+modules-right = volume memory cpu battery temperature date
 
 tray-position = right
 tray-maxsize = 16
@@ -204,7 +253,7 @@ card = intel_backlight
 
 [module/cpu]
 type = internal/cpu
-interval = 0.2
+interval = 1
 format = <label> <ramp-coreload>
 format-prefix-foreground = ${colors.primary}
 format-underline = ${colors.primary}
@@ -234,17 +283,23 @@ label = RAM
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.primary}
 bar-used-indicator =
-bar-used-width = 10
+bar-used-width = 16
 bar-used-foreground-0 = ${colors.primary}
 bar-used-foreground-1 = ${colors.primary}
 bar-used-foreground-2 = ${colors.primary}
 bar-used-foreground-3 = ${colors.primary}
 bar-used-foreground-4 = ${colors.primary}
 bar-used-foreground-5 = ${colors.primary}
-bar-used-foreground-6 = ${colors.secondary}
-bar-used-foreground-7 = ${colors.secondary}
-bar-used-foreground-8 = ${colors.secondary}
-bar-used-foreground-9 = ${colors.secondary}
+bar-used-foreground-6 = ${colors.primary}
+bar-used-foreground-7 = ${colors.primary}
+bar-used-foreground-8 = ${colors.primary}
+bar-used-foreground-9 = ${colors.primary}
+bar-used-foreground-10 = ${colors.secondary}
+bar-used-foreground-11 = ${colors.secondary}
+bar-used-foreground-12 = ${colors.secondary}
+bar-used-foreground-13 = ${colors.secondary}
+bar-used-foreground-14 = ${colors.secondary}
+bar-used-foreground-15 = ${colors.secondary}
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = ${colors.foreground-alt}
@@ -358,7 +413,7 @@ ramp-capacity-foreground = ${colors.foreground-alt}
 
 [module/temperature]
 type = internal/temperature
-thermal-zone = 2
+thermal-zone = 9
 warn-temperature = 70
 
 format = <ramp> <label>
