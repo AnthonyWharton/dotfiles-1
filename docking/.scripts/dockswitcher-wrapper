@@ -1,0 +1,4 @@
+#!/bin/bash
+
+killall -9 dockswitcher
+bash -c "exec -a Dockswitcher /home/raef/.scripts/dockswitcher" &>/dev/null &

@@ -1,0 +1,24 @@
+#!/bin/bash
+~/.scripts/layout-docked
+~/.scripts/launch-polybar docked
+killall nm-applet
+killall blueman-applet
+nm-applet &>/dev/null & 
+blueman-applet &>/dev/null &
+
+pacmd set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-mono
+pacmd set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
+
+xdotool search --classname ".*LowRes.*" windowkill
+xdotool search --classname ".*Media.*" windowkill
+google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
+google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
+
+mumble  &>/dev/null &
+discord &>/dev/null &
+steam   &>/dev/null &
+
+i3-msg workspace 2:β 
+i3-msg gaps inner current set 0
+
+

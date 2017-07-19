@@ -16,58 +16,10 @@ primary = #FFAF00
 secondary = #5FAFD7
 
 [bar/docked]
-monitor = DP-2
+dpi=220
+monitor = DP2
 width = 100%
-height = 32
-;offset-x = 5%
-;offset-y = 1%
-radius = fixed-center = false
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 3
-line-color = #f00
-
-border-size = 0
-border-color = #00000000
-
-padding-left = 0
-padding-right = 2
-
-module-margin-left = 1
-module-margin-right = 2
-
-font-0 = Source Code Pro:pixelsize=20;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = FontAwesome:pixelsize=14;0
-
-modules-left = i3 pkg media
-modules-center =
-modules-right = volume memory cpu battery temperature date
-
-tray-position = right
-tray-maxsize = 24
-;tray-padding = 2
-;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
-
-;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
-
-[bar/roaming]
-monitor = eDP-1
-width = 100%
-height = 32
+height = 64
 ;offset-x = 5%
 ;offset-y = 1%
 radius = fixed-center = false
@@ -97,7 +49,57 @@ modules-center =
 modules-right = volume memory cpu battery temperature date
 
 tray-position = right
-tray-maxsize = 16
+tray-maxsize = 32
+;tray-padding = 2
+;tray-transparent = true
+;tray-background = #0063ff
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[bar/roaming]
+dpi=220
+monitor = eDP1
+width = 100%
+height = 64
+;offset-x = 5%
+;offset-y = 1%
+radius = fixed-center = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Source Code Pro:pixelsize=10;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = siji:pixelsize=10;1
+font-3 = FontAwesome:pixelsize=14;0
+
+modules-left = i3 pkg media
+modules-center =
+modules-right = volume memory cpu battery temperature date
+
+tray-position = right
+tray-maxsize = 32
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff

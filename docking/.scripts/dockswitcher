@@ -1,0 +1,41 @@
+#!/bin/bash
+
+status="roaming"
+statuschanged=false
+while true
+do
+    roaming=0
+    xrandr  | grep "HDMI1 connected" >/dev/null || roaming=1
+    xrandr  | grep "DP2 connected"   >/dev/null || roaming=1
+    acpi -a | grep "on-line"         >/dev/null || roaming=1
+    if [ $roaming -eq 0 ]; then
+        #echo currently docked
+        if [ $status = "roaming" ]; then
+            echo switched to docked
+            statuschanged=true
+        else
+            statuschanged=false
+        fi
+        status="docked" 
+    else
+        #echo currently roaming
+        if [ $status = "docked" ]; then
+            echo switched to roaming
+            statuschanged=true
+        else
+            statuschanged=false
+        fi
+        status="roaming" 
+    fi
+    if [ $statuschanged = true ]; then
+       if [ $status = "roaming" ]; then
+           echo running roaming scripts
+           ~/.scripts/undocking
+       else
+           echo running docking scripts
+           ~/.scripts/docking
+       fi
+       sleep 2
+    fi
+    sleep 1
+done
