@@ -12,6 +12,9 @@ xdotool search --classname ".*Media.*" windowkill
 killall mumble  -9
 killall Discord -9
 killall steam -9
+killall "Google Play Music Desktop Player" -9
+
+umount /home/raef/Videos/Film
 
 i3-msg workspace 2:β
 i3-msg gaps inner current set 30

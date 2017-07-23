@@ -1,7 +1,7 @@
 #!/bin/bash
 
 status="roaming"
-statuschanged=false
+statuschanged=true
 while true
 do
     roaming=0

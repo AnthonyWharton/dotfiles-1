@@ -217,6 +217,9 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
+#main chrome window
+for_window [instance="^google-chrome$"] move to workspace 2:$ws2
+
 #right monitor
 for_window [instance=".*google-chrome/LowRes.*"] move to workspace 11
 
@@ -235,6 +238,9 @@ for_window [instance=".*discord.*"] move to workspace 9:$ws9
 #messaging
 for_window [instance=".*telegram.*"] move to workspace  8:$ws8
 for_window [instance=".*messenger.*"] move to workspace 8:$ws8
+
+#music
+for_window [instance=".*google play music.*"] move to workspace 7:$ws7
 
 # class                 border  backgr. text    indicator child_border
 client.focused          #FFAF00 #FFAF00 #FFAF00 #FFAF00 #FFAF00
@@ -256,7 +262,13 @@ exec --no-startup-id blueman-applet &
 exec --no-startup-id redshift &
 exec --no-startup-id libinput-gestures-setup start &
 exec --no-startup-id /home/raef/.scripts/autoload
-exec --no-startup-id xautolock -time 5 -locker "/home/raef/.scripts/lock-xwobf" &
+exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
+exec --no-startup-id messenger &
+exec --no-startup-id telegram-desktop &
+exec --no-startup-id google-chrome-stable &
+
 
 #switch to workspace 1 properly
 exec --no-startup-id i3-msg workspace number 1:α
+exec gnome-terminal &
+exec gnome-terminal &
