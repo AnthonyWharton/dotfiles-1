@@ -31,9 +31,3 @@ do
 done
 
 . /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate
-
-
-. /home/raef/torch/install/bin/torch-activate

@@ -188,7 +188,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+t gaps inner current set 0
-bindsym $mod+g gaps inner current set 30
+bindsym $mod+g gaps inner current set 20
 
 bindsym  Print exec /home/raef/.scripts/screenshot
 
@@ -249,14 +249,15 @@ client.unfocused        #404552 #404552 #404552 #404552 #404552
 client.urgent           #404552 #404552 #404552 #404552 #404552
 client.placeholder      #404552 #404552 #404552 #404552 #404552
 
-gaps inner 30
+gaps inner 20
 workspace 2:$ws2 gaps inner 0
 workspace 11 gaps inner 0
-new_window pixel 5
+new_window pixel 2
 hide_edge_borders both
 
 
-exec_always --no-startup-id /home/raef/.scripts/dockswitcher-wrapper
+#exec_always --no-startup-id /home/raef/.scripts/dockswitcher-wrapper
+exec_always --no-startup-id /home/raef/.scripts/launch-polybar roaming
 exec --no-startup-id nm-applet &
 exec --no-startup-id blueman-applet &
 exec --no-startup-id redshift &
@@ -270,5 +271,3 @@ exec --no-startup-id google-chrome-stable &
 
 #switch to workspace 1 properly
 exec --no-startup-id i3-msg workspace number 1:α
-exec gnome-terminal &
-exec gnome-terminal &

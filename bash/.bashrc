@@ -45,4 +45,3 @@ export VISUAL='vim'
 
 
 dbus-update-activation-environment --all
-

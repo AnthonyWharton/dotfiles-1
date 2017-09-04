@@ -1,6 +1,6 @@
 #!/bin/bash
 
-status="roaming"
+status="docked"
 statuschanged=true
 while true
 do
