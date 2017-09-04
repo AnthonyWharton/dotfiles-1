@@ -14,7 +14,7 @@ mount /home/raef/Videos/Film
 
 mumble  &>/dev/null &
 discord &>/dev/null &
-steam   &>/dev/null &
+steam-native   &>/dev/null &
 google-play-music   &>/dev/null &
 
 ~/.scripts/launch-polybar docked
