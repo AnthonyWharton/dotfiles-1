@@ -1,2 +1,2 @@
 #!/bin/bash
-rofi -show run -font "Source Code Pro 12" -color-window "#404552, #2F343F, #404552" -color-normal               "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -color-active "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -color-urgent              "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -width 20 -lines 5 -padding 10 -separator-style none -hide-scrollbar -bw 4
+rofi -show run -font "Source Code Pro 20" -color-window "#404552, #2F343F, #404552" -color-normal               "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -color-active "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -color-urgent              "#404552, #D4D4D4, #404552, #FFAF00, #D4D4D4" -width 20 -lines 5 -padding 10 -separator-style none -hide-scrollbar -bw 4
