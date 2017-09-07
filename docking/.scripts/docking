@@ -10,13 +10,12 @@ xdotool search --classname ".*Media.*" windowkill
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
-umount /home/raef/Videos/Film
-mount /home/raef/Videos/Film
-
 mumble  &>/dev/null &
 discord &>/dev/null &
 steam-native   &>/dev/null &
 google-play-music   &>/dev/null &
+
+killall xautolock -9 
 
 ~/.scripts/launch-polybar docked
 

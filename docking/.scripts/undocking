@@ -14,7 +14,7 @@ killall Discord -9
 killall steam -9
 killall "Google Play Music Desktop Player" -9
 
-umount /home/raef/Videos/Film
+xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 
 i3-msg workspace 2:β
 i3-msg gaps inner current set 30
