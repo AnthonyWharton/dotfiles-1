@@ -89,7 +89,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Source Code Pro:pixelsize=8;1
+font-0 = Source Code Pro:pixelsize=12;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
@@ -99,7 +99,7 @@ modules-center =
 modules-right = volume memory cpu battery temperature date
 
 tray-position = right
-tray-maxsize = 16
+tray-maxsize = 50
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
@@ -215,7 +215,7 @@ type = custom/script
 exec = ~/.scripts/mediainfo
 interval = 1
 format-underline = ${colors.primary}
-click-left = playerctl play-pause &
+click-left = playerctl --player=google-play-music-desktop-player play-pause &
 
 
 [module/mpd]
@@ -439,6 +439,8 @@ format = <label>
 format-underline = ${colors.primary}
 label = "%output:0:30%"
 exec = .scripts/pkg
+click-left = i3-msg exec "gnome-terminal -- sudo pacman -Syu"
+click-right = i3-msg exec "gnome-terminal -- sudo aura -Ayu"
 
 [settings]
 screenchange-reload = true
