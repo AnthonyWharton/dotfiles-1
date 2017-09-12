@@ -1,4 +1,6 @@
 #!/bin/bash
-
+xdotool search --classname ".*LowRes.*" windowkill
+xdotool search --classname ".*Media.*" windowkill
+xdotool search --classname ".*LaptopClinic.*" windowkill
 killall -9 dockswitcher
 bash -c "exec -a Dockswitcher /home/raef/.scripts/dockswitcher" &>/dev/null &
