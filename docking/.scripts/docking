@@ -2,6 +2,7 @@
 
 ~/.scripts/layout-docked
 
+pactl set-sink-mute 0 0
 pacmd set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-mono
 pacmd set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
 
