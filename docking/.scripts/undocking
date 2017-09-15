@@ -16,6 +16,8 @@ killall Discord -9
 killall steam -9
 killall "Google Play Music Desktop Player" -9
 
+light -S 10
+
 
 xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 

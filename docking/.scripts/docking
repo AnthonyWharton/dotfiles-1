@@ -17,6 +17,7 @@ steam-native   &>/dev/null &
 google-play-music   &>/dev/null &
 
 killall xautolock -9 
+light -S 100
 
 ~/.scripts/launch-polybar docked
 
