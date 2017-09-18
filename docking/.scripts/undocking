@@ -17,6 +17,8 @@ killall Discord -9
 killall steam -9
 killall "Google Play Music Desktop Player" -9
 
+nmcli radio wifi on
+
 light -S 10
 
 

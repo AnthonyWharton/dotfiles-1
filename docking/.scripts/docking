@@ -12,6 +12,8 @@ xdotool search --classname ".*LaptopClinic.*" windowkill
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
+nmcli radio wifi off
+
 mumble  &>/dev/null &
 discord &>/dev/null &
 steam-native   &>/dev/null &
