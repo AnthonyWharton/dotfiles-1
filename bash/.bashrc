@@ -43,5 +43,15 @@ source $BASH_IT/bash_it.sh
 export EDITOR='vim'
 export VISUAL='vim'
 
+function ssh() {
+    case $1 in
+        bluecrystal ) ssh rc15129@snowy.cs.bris.ac.uk -t "ssh rc15129@bluecrystalp3.bris.ac.uk" ;;
+        * ) command ssh $@ ;;
+    esac
+}
+
+xclip="xclip -selection c"
+
+export QT_QPA_PLATFORMTHEME=gtk2
 
 dbus-update-activation-environment --all
