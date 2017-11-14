@@ -14,11 +14,13 @@ endtry
 call plug#begin('~/.vim/vim-plug-plugins')
 Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdcommenter'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 call plug#end()
 
-set tabstop=8
 set shiftwidth=8
-set expandtab
+set tabstop=8
+set noexpandtab
 set number
 set background=dark
 set termguicolors
@@ -58,12 +60,17 @@ nmap <silent> <A-j>     :wincmd j<CR>
 nmap <silent> <A-h>     :wincmd h<CR>
 nmap <silent> <A-l>     :wincmd l<CR>
 map <C-n> :NERDTreeToggle<CR>
+autocmd VimEnter * NERDTree  " Autostart NERDTree
+autocmd VimEnter * wincmd p  " And then focus on file
+autocmd BufWinEnter * NERDTreeMirror
+autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "Clipboard from system
 set clipboard=unnamedplus
 
 "Latex 
 let g:tex_flavor = 'latex'
+let g:vimtex_latexmk_continuous = 1
 
 "Commenting
 filetype plugin on
@@ -78,12 +85,26 @@ set nowrap
 set mouse=a
 
 "Mark the 80 char column
-set colorcolumn=80
+" set colorcolumn=80
+let &colorcolumn=join(range(81,999),",")
+
+"Fix for auto indentation of semicolons
+set cinoptions+=L0
+set cinoptions+=g0
+
+" Search
+set smartcase            " Ignore case if all lower case, else search is case sensitive
+set hlsearch             " Highlight searched terms
+set incsearch            " Show highlighted terms as you search
 
 "Completion via YCM from the AUR
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_log_level = 'debug'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_show_diagnostics_ui = 0
+" let g:ycm_show_diagnostics_ui = 0
+" Check on save
+autocmd BufWritePost * YcmForceCompileAndDiagnostics
+
 
 "autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
