@@ -1,3 +1,2 @@
 #!/bin/bash
-import -window root /tmp/screen.png && xclip -selection c -t image/png -i /tmp/screen.png
-
+maim -s | xclip -selection clipboard -t image/png
