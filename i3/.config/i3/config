@@ -270,7 +270,7 @@ exec --no-startup-id /home/raef/.scripts/autoload
 #exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 exec --no-startup-id messenger &
 exec --no-startup-id telegram-desktop &
-exec --no-startup-id google-chrome-stable &
+exec --no-startup-id firefox-nightly &
 
 
 #switch to workspace 1 properly
