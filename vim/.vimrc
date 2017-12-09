@@ -16,8 +16,10 @@ Plug 'lervag/vimtex'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
+set autoindent
 set shiftwidth=8
 set tabstop=8
 set noexpandtab
@@ -46,11 +48,8 @@ while c <= 'z'
   let c = nr2char(1+char2nr(c))
 endw
 set timeout ttimeoutlen=50
-"Tree
-"let NERDTreeQuitOnOpen = 1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-let g:NERDTreeWinSize = 30
+
+"Nav
 nmap <silent> <A-Up>    :wincmd k<CR>
 nmap <silent> <A-Down>  :wincmd j<CR>
 nmap <silent> <A-Left>  :wincmd h<CR>
@@ -59,6 +58,16 @@ nmap <silent> <A-k>     :wincmd k<CR>
 nmap <silent> <A-j>     :wincmd j<CR>
 nmap <silent> <A-h>     :wincmd h<CR>
 nmap <silent> <A-l>     :wincmd l<CR>
+nmap <silent>  <A-]>    gt
+nmap <silent>  <A-]>    gT
+imap <silent>  <A-[>    <C-o>gT
+imap <silent>  <A-[>    <C-o>gT
+
+"Tree
+"let NERDTreeQuitOnOpen = 1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+let g:NERDTreeWinSize = 30
 map <C-n> :NERDTreeToggle<CR>
 autocmd VimEnter * NERDTree  " Autostart NERDTree
 autocmd VimEnter * wincmd p  " And then focus on file
@@ -97,6 +106,16 @@ set smartcase            " Ignore case if all lower case, else search is case se
 set hlsearch             " Highlight searched terms
 set incsearch            " Show highlighted terms as you search
 
+"Peekaboo for paste
+let g:peekaboo_window = 'vert bel 30new'
+
+"Don't question full reloads
+:set autoread
+au FocusGained,BufEnter * :silent! !
+
+"Fix python tabbing
+autocmd FileType python setlocal noexpandtab tabstop=8 shiftwidth=8
+
 "Completion via YCM from the AUR
 let g:ycm_confirm_extra_conf = 0
 " let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -107,4 +126,4 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 autocmd BufWritePost * YcmForceCompileAndDiagnostics
 
 
-"autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
+" autocmd VimEnter,BufNewFile,BufReadPost * silent! call HardMode()
