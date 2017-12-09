@@ -21,6 +21,7 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+PATH="$PATH:/home/raef/.gem/ruby/2.4.0/bin"
 
 for SCRIPT in /home/raef/.scripts/startup/*
 do
