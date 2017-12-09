@@ -89,7 +89,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Source Code Pro:pixelsize=12;1
+font-0 = Source Code Pro:pixelsize=10;1
 font-1 = Source Han Code JP=12;1
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
@@ -99,7 +99,7 @@ modules-center =
 modules-right = volume memory cpu battery temperature date
 
 tray-position = right
-tray-maxsize = 50
+tray-maxsize = 30
 ;tray-padding = 2
 ;tray-transparent = true
 ;tray-background = #0063ff
