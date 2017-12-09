@@ -7,9 +7,9 @@ nm-applet 2>/dev/null &
 blueman-applet 2>/dev/null &
 pacmd set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo
 pacmd set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
-pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo 0
+pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo 1
 xdotool search --classname ".*LowRes.*" windowkill
-xdotool search --classname ".*Media.*" windowkill
+xdotool search --class ".*firefox-Media.*" windowkill
 xdotool search --classname ".*LaptopClinic.*" windowkill
 #google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LaptopClinic &>/dev/null &
 killall mumble  -9
@@ -17,6 +17,7 @@ killall Discord -9
 killall steam -9
 killall nemo -9
 killall "Google Play Music Desktop Player" -9
+mpc stop
 
 nmcli radio wifi on
 

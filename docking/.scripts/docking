@@ -7,16 +7,17 @@ pacmd set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Devic
 pacmd set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
 
 xdotool search --classname ".*LowRes.*" windowkill
-xdotool search --classname ".*Media.*" windowkill
+xdotool search --class "firefox-Media" windowkill
 #xdotool search --classname ".*LaptopClinic.*" windowkill
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
-google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
+firefox-nightly -P Media --class firefox-Media &>/dev/null &
+# google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
 nmcli radio wifi off
 
 mumble  &>/dev/null &
 discord &>/dev/null &
-steam-native   &>/dev/null &
+# steam-native   &>/dev/null &
 google-play-music   &>/dev/null &
 
 killall xautolock -9 
