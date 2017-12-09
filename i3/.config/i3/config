@@ -220,12 +220,15 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 #main chrome window
 for_window [instance="^google-chrome$"] move to workspace 2:$ws2
+for_window [class="^Nightly.*"] move to workspace 2:$ws2
 
 #right monitor
 for_window [instance=".*google-chrome/LowRes.*"] move to workspace 11
+for_window [class="firefox-LowRes"] move to workspace 11
 
 #games & media
 for_window [instance=".*google-chrome/Media.*"] move to workspace 10:$ws10
+for_window [class=".*firefox-Media"] move to workspace 10:$ws10
 #laptop clinic
 for_window [instance=".*google-chrome/LaptopClinic.*"] move to workspace 3:$ws3
 #no really steam
