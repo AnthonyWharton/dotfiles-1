@@ -50,7 +50,13 @@ function ssh() {
     esac
 }
 
-xclip="xclip -selection c"
+alias xclip="xclip -selection c"
+alias dup="gnome-terminal ."
+
+function open() {
+    #do things with parameters like $1 such as
+    xdg-open "$1" &>/dev/null &
+}
 
 export QT_QPA_PLATFORMTHEME=gtk2
 
