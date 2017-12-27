@@ -13,6 +13,7 @@ Plug 'rccoles/vim-markaboo'
 Plug 'tomasr/molokai'
 Plug 'vim-syntastic/syntastic'
 Plug 'lilydjwg/colorizer'
+Plug 'junegunn/goyo.vim'
 call plug#end()
 
 "general
@@ -26,6 +27,13 @@ set backspace=indent,eol,start
 filetype plugin on
 filetype indent on
 set autoread
+set autowrite
+set autowriteall
+
+" Show matching brackets when text indicator is over them
+set showmatch 
+" How many tenths of a second to blink when matching brackets
+set mat=2
 
 " Search
 set ignorecase
@@ -105,6 +113,11 @@ nmap <silent>  <A-i>     gT
 imap <silent>  <A-u>     <C-o>gt
 imap <silent>  <A-i>     <C-o>gT
 
+"goyo
+let g:goyo_width=150
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = 2
+
 "Tree
 "let NERDTreeQuitOnOpen = 1
 let g:NERDTreeWinPos = "right"
@@ -148,9 +161,11 @@ let g:peekaboo_window = 'vert bel 30new'
 
 "Markaboo :D
 let g:markaboo_window = 'vert bel 30new'
+let g:markaboo_enable_special = 1
+let g:markaboo_marks_special = '."'''
 
 "Don't question full reloads
-:set autoread
+set autoread
 au FocusGained,BufEnter * :silent! !
 
 "Fix python tabbing
@@ -177,7 +192,9 @@ set wildmenu
 let g:airline_theme='molokai'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_extensions = ['syntastic', 'vimtex']
+let g:airline#extensions#tabline#show_splits = 0
+let g:airline_extensions = ['syntastic', 'vimtex', 'tabline']
+
 
 "I enjoy having a hard time
 " let g:hardtime_default_on = 1
