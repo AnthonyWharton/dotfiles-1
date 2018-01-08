@@ -1,1 +1,2 @@
-xargs sudo pacman -S --needed --noconfirm < ./installed_packages
+#!/bin/bash
+xargs -I {} bash -c 'sudo pacman -S --needed --noconfirm {} || yes | sudo aura -A {}' < ./installed_packages
