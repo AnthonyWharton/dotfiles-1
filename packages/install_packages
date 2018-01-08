@@ -1,0 +1,1 @@
+xargs sudo pacman -S --needed --noconfirm < ./installed_packages
