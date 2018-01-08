@@ -29,6 +29,7 @@ filetype indent on
 set autoread
 set autowrite
 set autowriteall
+set breakindent
 
 " Show matching brackets when text indicator is over them
 set showmatch 
