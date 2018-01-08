@@ -274,6 +274,7 @@ exec --no-startup-id /home/raef/.scripts/autoload
 exec --no-startup-id messenger &
 exec --no-startup-id telegram-desktop &
 exec --no-startup-id firefox-nightly &
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 
 #switch to workspace 1 properly
