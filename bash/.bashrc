@@ -45,7 +45,7 @@ export VISUAL='vim'
 
 function ssh() {
     case $1 in
-        bluecrystal ) ssh rc15129@snowy.cs.bris.ac.uk -t "ssh rc15129@bluecrystalp3.bris.ac.uk" ;;
+        bluecrystal ) ssh rc15129@snowy.cs.bris.ac.uk -t "ssh rc15129@bc4login.acrc.bris.ac.uk" ;;
         * ) command ssh $@ ;;
     esac
 }
@@ -59,5 +59,7 @@ function open() {
 }
 
 export QT_QPA_PLATFORMTHEME=gtk2
+
+set -o vi
 
 dbus-update-activation-environment --all
