@@ -139,6 +139,10 @@ let g:tex_flavor = 'latex'
 let g:vimtex_latexmk_continuous = 1
 
 "Commenting
+autocmd FileType c setlocal commentstring=//\ %s
+autocmd FileType h setlocal commentstring=//\ %s
+autocmd FileType cpp setlocal commentstring=//\ %s
+autocmd FileType hpp setlocal commentstring=//\ %s
 nmap <silent> <C-_>    gcc
 imap <silent> <C-_>    <C-o>gcc
 vmap <silent> <C-_>    gc
