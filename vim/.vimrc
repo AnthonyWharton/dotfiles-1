@@ -11,12 +11,13 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'junegunn/vim-peekaboo'
 Plug 'rccoles/vim-markaboo'
 Plug 'tomasr/molokai'
-Plug 'vim-syntastic/syntastic'
+" Plug 'vim-syntastic/syntastic'
 Plug 'lilydjwg/colorizer'
 Plug 'junegunn/goyo.vim'
 call plug#end()
 
 "general
+set nohidden
 set autoindent
 set shiftwidth=8
 set tabstop=8
@@ -30,6 +31,9 @@ set autoread
 set autowrite
 set autowriteall
 set breakindent
+
+"Typewriter mode courtesy of Anthony Wharton
+set scrolloff=999        " Broken Typewriter mode
 
 " Show matching brackets when text indicator is over them
 set showmatch 
@@ -57,16 +61,16 @@ set termguicolors
 colorscheme molokai
 
 "Syntax checking
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_haskell_checkers = ['hlint']
-let g:syntastic_tex_checkers=['chktex']
-"If it's not an error we don't care
-let g:syntastic_quiet_messages = {
-    \ "!level":  "errors",
-    \ "type":    "style"}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_ignore_files = ['NERD_tree*']
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_haskell_checkers = ['hlint']
+"let g:syntastic_tex_checkers=['chktex']
+""If it's not an error we don't care
+"let g:syntastic_quiet_messages = {
+"    \ "!level":  "errors",
+"    \ "type":    "style"}
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 0
+"let g:syntastic_ignore_files = ['NERD_tree*']
 
 "Syntax highlighting
 syntax enable
@@ -177,13 +181,29 @@ au FocusGained,BufEnter * :silent! !
 " autocmd FileType python setlocal noexpandtab tabstop=8 shiftwidth=8
 
 "Completion via YCM from the AUR
+"Don't ask to load config - maybe insecure
 let g:ycm_confirm_extra_conf = 0
-" let g:ycm_global_ycm_extra_conf = '/usr/share/vim/vimfiles/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"Allow jump to erros using :lne and :lp
+let g:ycm_always_populate_location_list = 1
+"Allow completion from system preprocessor macros
+let g:ycm_collect_identifiers_from_tags_files=1
+"More debug
 let g:ycm_log_level = 'debug'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"Set to python3 explicitly
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+"" start completion from the first character
+let g:ycm_min_num_of_chars_for_completion=1
+"" don't cache completion items
+let g:ycm_cache_omnifunc=0
+"" complete syntax keywords
+let g:ycm_seed_identifiers_with_syntax=1
 " let g:ycm_show_diagnostics_ui = 0
+let g:ycm_autoclose_preview_window_after_insertion=1
 " Check on save
 autocmd BufWritePost * YcmForceCompileAndDiagnostics
+
+command Declaration YcmCompleter GoToDeclaration
+command Definition  YcmCompleter GoToDefinition
 
 "Fix for garbage in start
 set t_RV=

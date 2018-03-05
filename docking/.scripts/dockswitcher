@@ -4,31 +4,32 @@ status="roaming"
 ~/.scripts/undocking
 while true
 do
-    count=3
-    xrandr  | grep "HDMI1 connected" >/dev/null || ((count--))
-    xrandr  | grep "DP2 connected"   >/dev/null || ((count--))
-    acpi -a | grep "on-line"         >/dev/null || ((count--))
-    echo "Count is $count"
-    if [ $status = "roaming" ] && [ $count -eq 3 ]; then
-        echo "Switching to docked"
-        statuschanged=true
-    elif [ $status = "docked" ] && [ $count -eq 0 ]; then
-        echo "Switching to roaming"
-        statuschanged=true
-    else
-        statuschanged=false
-    fi
-    if [ $statuschanged = true ]; then
-       if [ $status = "docked" ]; then
-           echo running roaming scripts
-           ~/.scripts/undocking
-           status=roaming
-       else
-           echo running docking scripts
-           ~/.scripts/docking
-           status=docked
-       fi
-       sleep 2
-    fi
-    sleep 1
+	gpg-connect-agent updatestartuptty /bye >/dev/null
+	count=3
+	xrandr  | grep "HDMI1 connected" >/dev/null || ((count--))
+	xrandr  | grep "DP2 connected"   >/dev/null || ((count--))
+	acpi -a | grep "on-line"		 >/dev/null || ((count--))
+	echo "Count is $count"
+	if [ $status = "roaming" ] && [ $count -eq 3 ]; then
+		echo "Switching to docked"
+		statuschanged=true
+	elif [ $status = "docked" ] && [ $count -eq 0 ]; then
+		echo "Switching to roaming"
+		statuschanged=true
+	else
+		statuschanged=false
+	fi
+	if [ $statuschanged = true ]; then
+	   if [ $status = "docked" ]; then
+		   echo running roaming scripts
+		   ~/.scripts/undocking
+		   status=roaming
+	   else
+		   echo running docking scripts
+		   ~/.scripts/docking
+		   status=docked
+	   fi
+	   sleep 2
+	fi
+	sleep 1
 done

@@ -50,6 +50,13 @@ function ssh() {
     esac
 }
 
+function git() {
+    case $1 in
+        ls ) git log --all --graph --decorate --pretty=format:"%Cblue%an%Cred%d%Creset%n%s%n" ;;
+        * ) command git $@ ;;
+    esac
+}
+
 alias xclip="xclip -selection c"
 alias dup="gnome-terminal ."
 
@@ -63,3 +70,14 @@ export QT_QPA_PLATFORMTHEME=gtk2
 set -o vi
 
 dbus-update-activation-environment --all
+
+unset SSH_AGENT_PID
+if [ "${gnupg_SSH_AUTH_SOCK_by:-0}" -ne $$ ]; then
+  export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket)"
+fi
+
+# Set GPG TTY
+export GPG_TTY=$(tty)
+
+# Refresh gpg-agent tty in case user switches into an X session
+gpg-connect-agent updatestartuptty /bye >/dev/null
