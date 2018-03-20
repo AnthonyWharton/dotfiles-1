@@ -1,0 +1,3 @@
+[submodule "steam/.steam/steam/skins/Air-for-Steam"]
+	path = steam/.steam/steam/skins/Air-for-Steam
+	url = git@github.com:RcColes/Air-for-Steam.git
