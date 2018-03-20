@@ -11,8 +11,8 @@ Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'junegunn/vim-peekaboo'
 Plug 'rccoles/vim-markaboo'
 Plug 'tomasr/molokai'
-" Plug 'vim-syntastic/syntastic'
-Plug 'lilydjwg/colorizer'
+Plug 'airblade/vim-gitgutter'
+" Plug 'lilydjwg/colorizer' // really slow
 Plug 'junegunn/goyo.vim'
 call plug#end()
 
@@ -47,13 +47,28 @@ set hlsearch             " Highlight searched terms
 set incsearch            " Show highlighted terms as you search
 
 " Map :W to sudo write
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
 " date string option
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+
+"gitgutter
+let g:gitgutter_terminal_reports_focus=0
+let g:gitgutter_map_keys=0
+set updatetime=100
+let g:gitgutter_sign_added = '✚'
+let g:gitgutter_sign_modified = '✹'
+let g:gitgutter_sign_removed = '✖'
+command! Stage GitGutterStageHunk
+command! Undo  GitGutterUndoHunk
+highlight link GitGutterAdd Function
+highlight link GitGutterChange Special
+highlight link GitGutterDelete Tag
+highlight link GitGutterChangeDelete Special
+
 
 "Theme
 set termguicolors
@@ -102,6 +117,12 @@ while c <= 'z'
   exec "imap \e".c." <A-".c.">"
   let c = nr2char(1+char2nr(c))
 endw
+let c='1'
+while c <= '9'
+  exec "set <A-".c.">=\e".c
+  exec "imap \e".c." <A-".c.">"
+  let c = nr2char(1+char2nr(c))
+endw
 set timeout ttimeoutlen=50
 
 "Nav
@@ -130,10 +151,11 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 map <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * NERDTree  " Autostart NERDTree
-autocmd VimEnter * wincmd p  " And then focus on file
-autocmd BufWinEnter * NERDTreeMirror
+autocmd VimEnter * silent! NERDTree  " Autostart NERDTree
+autocmd VimEnter * silent! wincmd p  " And then focus on file
+autocmd BufWinEnter * silent! NERDTreeMirror
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+autocmd TabLeave * if bufname('') =~ "Nerd_tree" | wincmd h | endif
 
 "Clipboard from system
 set clipboard=unnamedplus
@@ -151,11 +173,71 @@ nmap <silent> <C-_>    gcc
 imap <silent> <C-_>    <C-o>gcc
 vmap <silent> <C-_>    gc
 
+"get rid of buffers
+fu! DeleteInactiveBufs()
+	"From tabpagebuflist() help, get a list of all buffers in all tabs
+	let tablist = []
+	for i in range(tabpagenr('$'))
+		call extend(tablist, tabpagebuflist(i + 1))
+	endfor
+
+	"Below originally inspired by Hara Krishna Dara and Keith Roberts
+	"http://tech.groups.yahoo.com/group/vim/message/56425
+	let nWipeouts = 0
+	for i in range(1, bufnr('$'))
+		if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
+		"bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
+			silent exec 'bwipeout' i
+			let nWipeouts = nWipeouts + 1
+		endif
+	endfor
+endfunction
+
+autocmd WinEnter * call DeleteInactiveBufs()
+
+" save/restore
+" set ssop-=options    " do not store global and local values in a session
+" set ssop-=folds      " do not store folds
+" fu! SaveSess()
+" 	execute 'mksession!'. getcwd()  .'/.session.vim'
+" endfunction
+
+" if !exists('*RestoreSess')
+" 	fu RestoreSess()
+" 	if filereadable(getcwd() ."/.session.vim")
+" 		execute 'so' . getcwd() . '/.session.vim'
+" 		if bufexists(1)
+" 		    for l in range(1, bufnr('$'))
+" 		        if bufwinnr(l) == -1
+" 		            exec 'vert sbuffer ' . l
+" 		        endif
+" 		    endfor
+" 		endif
+" 	endif
+" 	so /home/raef/.vimrc
+" 	bufdo e
+" 	endfunction
+" endif
+
+" autocmd VimLeave * call SaveSess()
+" autocmd VimEnter * call RestoreSess()
+
+"Tabs suck
+nmap <A-1> 1gt
+nmap <A-2> 2gt
+nmap <A-3> 3gt
+nmap <A-4> 4gt
+nmap <A-5> 5gt
+nmap <A-6> 6gt
+nmap <A-7> 7gt
+nmap <A-8> 8gt
+nmap <A-9> 9gt
+
 "Don't like wrap by default
 set nowrap
 
 "Mourse control
-set mouse=a
+" set mouse=a
 
 "Mark the 80 char column
 " set colorcolumn=80
@@ -166,16 +248,16 @@ set cinoptions+=L0
 set cinoptions+=g0
 
 "Peekaboo for paste
-let g:peekaboo_window = 'vert bel 30new'
+let g:peekaboo_window = 'vert bel 50new'
 
 "Markaboo :D
-let g:markaboo_window = 'vert bel 30new'
+let g:markaboo_window = 'vert bel 50new'
 let g:markaboo_enable_special = 1
 let g:markaboo_marks_special = '."'''
 
-"Don't question full reloads
-set autoread
-au FocusGained,BufEnter * :silent! !
+""Don't question full reloads
+"set autoread
+"au FocusGained,BufEnter * :silent! !
 
 "Fix python tabbing
 " autocmd FileType python setlocal noexpandtab tabstop=8 shiftwidth=8
@@ -201,9 +283,12 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_autoclose_preview_window_after_insertion=1
 " Check on save
 autocmd BufWritePost * YcmForceCompileAndDiagnostics
-
-command Declaration YcmCompleter GoToDeclaration
-command Definition  YcmCompleter GoToDefinition
+"Don't show fixit window
+autocmd User YcmQuickFixOpened cclose
+"Commands
+command! Declaration YcmCompleter GoToDeclaration
+command! Definition  YcmCompleter GoToDefinition
+command! Fix         YcmCompleter FixIt
 
 "Fix for garbage in start
 set t_RV=
@@ -218,6 +303,7 @@ let g:airline_theme='molokai'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_extensions = ['syntastic', 'vimtex', 'tabline']
 
 
