@@ -151,8 +151,8 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let g:NERDTreeWinSize = 30
 map <C-n> :NERDTreeToggle<CR>
-autocmd VimEnter * silent! NERDTree  " Autostart NERDTree
-autocmd VimEnter * silent! wincmd p  " And then focus on file
+"autocmd VimEnter * silent! NERDTree  " Autostart NERDTree
+"autocmd VimEnter * silent! wincmd p  " And then focus on file
 autocmd BufWinEnter * silent! NERDTreeMirror
 autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd TabLeave * if bufname('') =~ "Nerd_tree" | wincmd h | endif

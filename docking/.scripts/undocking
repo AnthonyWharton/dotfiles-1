@@ -27,5 +27,5 @@ light -S 50
 xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 
 i3-msg workspace 2:β
-i3-msg gaps inner current set 30
+i3-msg gaps inner current set 10
 

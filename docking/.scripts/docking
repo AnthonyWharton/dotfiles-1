@@ -10,7 +10,7 @@ xdotool search --classname ".*LowRes.*" windowkill
 xdotool search --class "firefox-Media" windowkill
 #xdotool search --classname ".*LaptopClinic.*" windowkill
 google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
-firefox-nightly -P Media --class firefox-Media &>/dev/null &
+firefox -P Media --class firefox-Media &>/dev/null &
 # google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
 nmcli radio wifi off

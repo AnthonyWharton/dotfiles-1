@@ -10,5 +10,5 @@ xset s noblank
 
 #export GDK_SCALE=2
 #gsettings set org.gnome.desktop.interface scaling-factor 2
-export BROWSER=/usr/bin/firefox-nightly
+export BROWSER=/bin/firefox
 i3

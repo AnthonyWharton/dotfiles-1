@@ -188,11 +188,9 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+t gaps inner current set 0
-bindsym $mod+g gaps inner current set 10
+bindsym $mod+g gaps inner current set 20
 
 bindsym  Print exec /home/raef/.scripts/screenshot
-
-bindsym  $mod+y exec gnome-terminal -- /home/raef/.scripts/note
 
 bindsym $mod+semicolon exec /home/raef/.scripts/lock-xwobf
 
@@ -220,36 +218,6 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 
-#main chrome window
-for_window [instance="^google-chrome$"] move to workspace 2:$ws2
-for_window [class="^Firefox.*"] move to workspace 2:$ws2
-
-#right monitor
-for_window [instance=".*google-chrome/LowRes.*"] move to workspace 11
-for_window [class="firefox-LowRes"] move to workspace 11
-
-#games & media
-for_window [instance=".*google-chrome/Media.*"] move to workspace 10:$ws10
-for_window [class=".*firefox-Media"] move to workspace 10:$ws10
-#laptop clinic
-for_window [instance=".*google-chrome/LaptopClinic.*"] move to workspace 3:$ws3
-#no really steam
-for_window [class=".*steam.*"] move to workspace 10:$ws10
-for_window [instance=".*steam.*"] move to workspace 10:$ws10
-for_window [class=".*Steam.*"] move to workspace 10:$ws10
-for_window [instance=".*Steam.*"] move to workspace 10:$ws10
-
-#comms
-for_window [instance=".*mumble.*"] move to workspace  9:$ws9
-for_window [instance=".*discord.*"] move to workspace 9:$ws9
-
-#messaging
-for_window [instance=".*telegram.*"] move to workspace  8:$ws8
-for_window [instance=".*messenger.*"] move to workspace 8:$ws8
-
-#music
-for_window [instance=".*google play music.*"] move to workspace 7:$ws7
-
 # class                 border  backgr. text    indicator child_border
 client.focused          #FFAF00 #FFAF00 #FFAF00 #FFAF00 #FFAF00
 client.focused_inactive #404552 #404552 #404552 #404552 #404552
@@ -257,27 +225,12 @@ client.unfocused        #404552 #404552 #404552 #404552 #404552
 client.urgent           #404552 #404552 #404552 #404552 #404552
 client.placeholder      #404552 #404552 #404552 #404552 #404552
 
-gaps inner 10
+gaps inner 20
 workspace 2:$ws2 gaps inner 0
 workspace 11 gaps inner 0
 new_window pixel 5 
 hide_edge_borders both
 
 
-exec_always --no-startup-id /home/raef/.scripts/dockswitcher-wrapper
-#exec_always --no-startup-id /home/raef/.scripts/launch-polybar roaming
-exec --no-startup-id nm-applet &
-exec --no-startup-id blueman-applet &
-exec --no-startup-id redshift &
-exec --no-startup-id light -S 60
-exec --no-startup-id libinput-gestures-setup start &
-exec --no-startup-id /home/raef/.scripts/autoload
-#exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
-exec --no-startup-id messenger &
-exec --no-startup-id telegram-desktop &
-exec --no-startup-id firefox &
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-
-#switch to workspace 1 properly
-exec --no-startup-id i3-msg workspace number 1:α
+exec_always --no-startup-id /home/raef/.scripts/layout-solo
+exec --no-startup-id /home/raef/.scripts/startup/bg-normal
