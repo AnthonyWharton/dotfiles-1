@@ -1,16 +1,14 @@
 #!/bin/bash
 ~/.scripts/layout-roaming
 ~/.scripts/launch-polybar roaming
-killall nm-applet
-killall blueman-applet
-nm-applet 2>/dev/null &
-blueman-applet 2>/dev/null &
+
+killall stalonetray -9
+stalonetray -c ~/.config/stalonetray/roaming &
 pacmd set-default-source alsa_input.pci-0000_00_1f.3.analog-stereo
 pacmd set-default-sink alsa_output.pci-0000_00_1f.3.analog-stereo
 pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo 1
-xdotool search --classname ".*LowRes.*" windowkill
-xdotool search --class ".*firefox-Media.*" windowkill
-xdotool search --classname ".*LaptopClinic.*" windowkill
+xdotool search --class ".*browser-Media.*" windowkill
+xdotool search --class ".*browser-LowRes.*" windowkill
 #google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LaptopClinic &>/dev/null &
 killall mumble  -9
 killall Discord -9
@@ -23,8 +21,12 @@ nmcli radio wifi on
 
 light -S 50
 
-
 xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
+
+killall nm-applet
+killall blueman-applet
+nm-applet 2>/dev/null &
+blueman-applet 2>/dev/null &
 
 i3-msg workspace 2:β
 i3-msg gaps inner current set 10

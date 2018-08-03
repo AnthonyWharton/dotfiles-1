@@ -1,9 +1,22 @@
 #!/bin/bash
-pac=$(checkupdates | wc -l)
+pac=$(checkupdates 2>/dev/null | wc -l)
+
+if [ "$(checkupdates 2>&1)" == "==> ERROR: Cannot fetch updates" ]
+then
+	pac="?"
+fi
+
 aur=$(cower -u 2>/dev/null | wc -l)
-if ping -q -w 2 -c 1 176.34.135.167 > /dev/null 2>&1 ; then
-    echo "%{u#FFAF00 +u}$pac | $aur%{-u}"
+
+if [ "$(cower -u 2>&1)" == "error: [multi]: Couldn't resolve host name" ]
+then
+	aur="?"
+fi
+
+if [ "$pac" == "?" ] || [ "$aur" == "?" ]
+then
+    echo "%{u#5FAFD7 +u}%{F#B5B5B5}$pac | $aur%{-u}"
 else
-    echo "%{u#5FAFD7 +u}%{F#B5B5B5}? | ?%{-u}"
+    echo "%{u#FFAF00 +u}$pac | $aur%{-u}"
 fi
 

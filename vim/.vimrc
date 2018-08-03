@@ -282,9 +282,11 @@ let g:ycm_seed_identifiers_with_syntax=1
 " let g:ycm_show_diagnostics_ui = 0
 let g:ycm_autoclose_preview_window_after_insertion=1
 " Check on save
-autocmd BufWritePost * YcmForceCompileAndDiagnostics
+autocmd BufWritePost * silent! YcmForceCompileAndDiagnostics
 "Don't show fixit window
 autocmd User YcmQuickFixOpened cclose
+"Open definition / declaration in new window sometimes
+let g:ycm_goto_buffer_command="new-tab"
 "Commands
 command! Declaration YcmCompleter GoToDeclaration
 command! Definition  YcmCompleter GoToDefinition

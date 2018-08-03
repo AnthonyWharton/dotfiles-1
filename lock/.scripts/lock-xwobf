@@ -4,6 +4,7 @@ then
     echo "Running"
 else
     echo "Stopped"
-    xwobf -s 32 /tmp/.i3lock.png
-    i3lock -u -i /tmp/.i3lock.png
+    xwobf -s 8 /tmp/.i3lock.png
+    i3lock -u -i /tmp/.i3lock.png -x "polybar tray"
+    sleep 1
 fi

@@ -188,7 +188,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bindsym $mod+t gaps inner current set 0
-bindsym $mod+g gaps inner current set 10
+bindsym $mod+g gaps inner current set 20
 
 bindsym  Print exec /home/raef/.scripts/screenshot
 
@@ -222,15 +222,15 @@ for_window [title="^Steam Keyboard$"] floating enable
 
 #main chrome window
 for_window [instance="^google-chrome$"] move to workspace 2:$ws2
-for_window [class="^Firefox.*"] move to workspace 2:$ws2
+for_window [class="Iceweasel"] move to workspace 2:$ws2
 
 #right monitor
 for_window [instance=".*google-chrome/LowRes.*"] move to workspace 11
-for_window [class="firefox-LowRes"] move to workspace 11
+for_window [class="browser-LowRes"] move to workspace 11
 
 #games & media
 for_window [instance=".*google-chrome/Media.*"] move to workspace 10:$ws10
-for_window [class=".*firefox-Media"] move to workspace 10:$ws10
+for_window [class="browser-Media"] move to workspace 10:$ws10
 #laptop clinic
 for_window [instance=".*google-chrome/LaptopClinic.*"] move to workspace 3:$ws3
 #no really steam
@@ -257,10 +257,10 @@ client.unfocused        #404552 #404552 #404552 #404552 #404552
 client.urgent           #404552 #404552 #404552 #404552 #404552
 client.placeholder      #404552 #404552 #404552 #404552 #404552
 
-gaps inner 10
+gaps inner 20
 workspace 2:$ws2 gaps inner 0
 workspace 11 gaps inner 0
-new_window pixel 5 
+new_window pixel 5
 hide_edge_borders both
 
 
@@ -275,8 +275,9 @@ exec --no-startup-id /home/raef/.scripts/autoload
 #exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 exec --no-startup-id messenger &
 exec --no-startup-id telegram-desktop &
-exec --no-startup-id firefox &
+exec --no-startup-id iceweasel &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+exec --no-startup-id compton &
 
 
 #switch to workspace 1 properly

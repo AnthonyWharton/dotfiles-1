@@ -2,18 +2,21 @@
 
 ~/.scripts/layout-docked
 
+killall stalonetray -9
+stalonetray -c ~/.config/stalonetray/docked &
+
 pactl set-sink-mute 0 0
 pacmd set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-mono
 pacmd set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
 
-xdotool search --classname ".*LowRes.*" windowkill
-xdotool search --class "firefox-Media" windowkill
+xdotool search --class "browser-LowRes" windowkill
+xdotool search --class "browser-Media" windowkill
 #xdotool search --classname ".*LaptopClinic.*" windowkill
-google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/LowRes --force-device-scale-factor=1 &>/dev/null &
-firefox -P Media --class firefox-Media &>/dev/null &
+iceweasel -P Media --class browser-Media &>/dev/null &
+iceweasel -P LowRes --class browser-LowRes &>/dev/null &
 # google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
-nmcli radio wifi off
+# nmcli radio wifi off
 
 mumble  &>/dev/null &
 discord &>/dev/null &
@@ -22,6 +25,11 @@ google-play-music   &>/dev/null &
 
 killall xautolock -9 
 light -S 100
+
+killall nm-applet -9
+killall blueman-applet -9
+nm-applet 2>/dev/null &
+blueman-applet 2>/dev/null &
 
 ~/.scripts/launch-polybar docked
 

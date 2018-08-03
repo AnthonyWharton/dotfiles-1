@@ -5,10 +5,11 @@ xset s off
 xset -dpms
 xset s noblank
 
-[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
+#[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 #xrandr --dpi 196
 
 #export GDK_SCALE=2
 #gsettings set org.gnome.desktop.interface scaling-factor 2
 export BROWSER=/bin/firefox
+mount ~/Media
 i3
