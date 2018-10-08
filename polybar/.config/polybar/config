@@ -43,7 +43,7 @@ font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 
-modules-left = i3 pkg media
+modules-left = i3 pkg mail media
 modules-center =
 modules-right = pulseaudio memory cpu battery temperature date
 
@@ -92,7 +92,7 @@ font-1 = Source Han Code JP=12;1
 font-2 = siji:pixelsize=10;1
 font-3 = FontAwesome:pixelsize=14;0
 
-modules-left = i3 pkg media
+modules-left = i3 pkg mail media
 modules-center =
 modules-right = pulseaudio memory cpu battery temperature date
 
@@ -207,6 +207,24 @@ label-visible-padding = ${self.label-focused-padding}
 label-urgent = %name%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
+
+[module/pkg]
+type = custom/script
+interval = 60
+format = <label>
+format-underline = ${colors.primary}
+label = "%output:0:30%"
+exec = .scripts/pkg
+click-left = i3-msg exec "gnome-terminal -- sudo pacman -Syu"
+click-right = i3-msg exec "gnome-terminal -- sudo aura -Ayu"
+
+[module/mail]
+type = custom/script
+exec = ~/.scripts/mail-count
+interval = 20
+format-underline = ${colors.primary}
+click-left = i3-msg exec "gnome-terminal -- mail"
+click-right = i3-msg exec "fetchmail"
 
 [module/media]
 type = custom/script
@@ -429,16 +447,6 @@ ramp-0 = 
 ramp-1 = 
 ramp-2 = 
 ramp-foreground = ${colors.foreground-alt}
-
-[module/pkg]
-type = custom/script
-interval = 60
-format = <label>
-format-underline = ${colors.primary}
-label = "%output:0:30%"
-exec = .scripts/pkg
-click-left = i3-msg exec "gnome-terminal -- sudo pacman -Syu"
-click-right = i3-msg exec "gnome-terminal -- sudo aura -Ayu"
 
 [settings]
 screenchange-reload = true

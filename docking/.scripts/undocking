@@ -21,13 +21,16 @@ nmcli radio wifi on
 
 light -S 50
 
-xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
+# xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
+
+umount /home/raef/Media
 
 killall nm-applet
-killall blueman-applet
 nm-applet 2>/dev/null &
-blueman-applet 2>/dev/null &
+
+killall dunst -9
+dunst -mon 0 &
 
 i3-msg workspace 2:β
-i3-msg gaps inner current set 10
+i3-msg gaps inner current set 20
 

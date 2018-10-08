@@ -23,13 +23,16 @@ discord &>/dev/null &
 # steam-native   &>/dev/null &
 google-play-music   &>/dev/null &
 
+mount /home/raef/Media
+
 killall xautolock -9 
 light -S 100
 
 killall nm-applet -9
-killall blueman-applet -9
 nm-applet 2>/dev/null &
-blueman-applet 2>/dev/null &
+
+killall dunst -9
+dunst -mon 2 &
 
 ~/.scripts/launch-polybar docked
 

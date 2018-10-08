@@ -43,9 +43,12 @@ source $BASH_IT/bash_it.sh
 export EDITOR='vim'
 export VISUAL='vim'
 
+PATH="$PATH:$(ruby -e 'print Gem.user_dir')/bin"
+
 function ssh() {
     case $1 in
-        bluecrystal ) ssh rc15129@snowy.cs.bris.ac.uk -t "ssh rc15129@bc4login.acrc.bris.ac.uk" ;;
+        bcp4 ) ssh rc15129@snowy.cs.bris.ac.uk -t "ssh rc15129@bc4login.acrc.bris.ac.uk" ;;
+        bcp4-direct ) ssh rc15129@bc4login.acrc.bris.ac.uk ;;
         * ) command ssh $@ ;;
     esac
 }
@@ -55,6 +58,15 @@ function git() {
         ls ) git log --all --graph --decorate --pretty=format:"%Cblue%an%Cred%d%Creset%n%s%n" ;;
         * ) command git $@ ;;
     esac
+}
+
+function cal() {
+	if [ "$1" == "" ]
+		then
+			khal calendar now
+		else
+			khal calendar $1
+	fi
 }
 
 alias xclip="xclip -selection c"
