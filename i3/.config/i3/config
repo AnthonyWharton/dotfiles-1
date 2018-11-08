@@ -223,6 +223,7 @@ for_window [title="^Steam Keyboard$"] floating enable
 #main chrome window
 for_window [instance="^google-chrome$"] move to workspace 2:$ws2
 for_window [class="Iceweasel"] move to workspace 2:$ws2
+for_window [class="Firefox"] move to workspace 2:$ws2
 
 #right monitor
 for_window [instance=".*google-chrome/LowRes.*"] move to workspace 11
@@ -266,19 +267,20 @@ hide_edge_borders both
 
 
 exec_always --no-startup-id /home/raef/.scripts/dockswitcher-wrapper
-#exec_always --no-startup-id /home/raef/.scripts/launch-polybar roaming
+##exec_always --no-startup-id /home/raef/.scripts/launch-polybar roaming
 exec --no-startup-id nm-applet &
-#exec --no-startup-id blueman-applet &
+##exec --no-startup-id blueman-applet &
 exec --no-startup-id redshift &
 exec --no-startup-id light -S 30
 exec --no-startup-id libinput-gestures-setup start &
 exec --no-startup-id /home/raef/.scripts/autoload
-#exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
+##exec --no-startup-id xautolock -time 15 -locker "/home/raef/.scripts/lock-xwobf" &
 exec --no-startup-id messenger &
 exec --no-startup-id telegram-desktop &
-exec --no-startup-id iceweasel &
+## exec --no-startup-id iceweasel &
+exec --no-startup-id /usr/bin/firefox &
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-exec --no-startup-id compton &
+#exec --no-startup-id compton &
 exec --no-startup-id /usr/lib/geoclue-2.0/demos/agent
 
 

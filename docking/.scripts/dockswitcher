@@ -6,8 +6,8 @@ while true
 do
 	gpg-connect-agent updatestartuptty /bye >/dev/null
 	count=3
-	xrandr  | grep "HDMI1 connected" >/dev/null || ((count--))
-	xrandr  | grep "DP2 connected"   >/dev/null || ((count--))
+	# xrandr  | grep "HDMI1 connected" >/dev/null || ((count--))
+	xrandr  | grep "DP1 connected"   >/dev/null || ((count--))
 	acpi -a | grep "on-line"		 >/dev/null || ((count--))
 	echo "Count is $count"
 	if [ $status = "roaming" ] && [ $count -eq 3 ]; then

@@ -1,4 +1,4 @@
 #!/bin/sh
 #xrandr --output HDMI2 --panning 0x0+0+0 --scale 1x1 --off --output HDMI1 --pos 7680x120 --scale 1x1 --mode 1920x1080 --rotate left --panning 0x0+0+0 --output DP1 --panning 0x0+0+0 --off --output eDP1 --scale 1x1 --panning 0x0+0+0 --mode 1920x1080 --primary --output DP2 --panning 0x0+0+0 --off
-xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --mode 1280x1024 --pos 3840x56 --rotate normal --output DP2 --mode 1920x1080 --pos 1920x0 --rotate normal
+xrandr --output VIRTUAL1 --off --output eDP1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --output DP1 --off --output HDMI2 --off --output HDMI1 --pos 3840x0 --mode 1280x1024 --output DP2 --mode 1920x1080 --pos 1920x0 --rotate normal
 ~/.scripts/startup/bg-normal

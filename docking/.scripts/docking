@@ -5,15 +5,13 @@
 killall stalonetray -9
 stalonetray -c ~/.config/stalonetray/docked &
 
-pactl set-sink-mute 0 0
-pacmd set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-mono
-pacmd set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo
+~/.scripts/audio-docked
 
 xdotool search --class "browser-LowRes" windowkill
 xdotool search --class "browser-Media" windowkill
 #xdotool search --classname ".*LaptopClinic.*" windowkill
-iceweasel -P Media --class browser-Media &>/dev/null &
-iceweasel -P LowRes --class browser-LowRes &>/dev/null &
+firefox -P Media --class browser-Media &>/dev/null &
+firefox -P LowRes --class browser-LowRes &>/dev/null &
 # google-chrome-stable --user-data-dir=/home/raef/.config/google-chrome/Media &>/dev/null &
 
 # nmcli radio wifi off

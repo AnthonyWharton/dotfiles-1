@@ -14,6 +14,10 @@ Plug 'tomasr/molokai'
 Plug 'airblade/vim-gitgutter'
 " Plug 'lilydjwg/colorizer' // really slow
 Plug 'junegunn/goyo.vim'
+Plug 'inkarkat/vim-spellcheck'
+Plug 'vim-scripts/ingo-library'
+Plug 'romainl/vim-qf'
+Plug 'mihaifm/bufstop'
 call plug#end()
 
 "general
@@ -31,6 +35,15 @@ set autoread
 set autowrite
 set autowriteall
 set breakindent
+
+"Terminals are 80 characters
+set tw=80
+
+set foldmethod=indent
+set foldlevel=0
+set foldnestmax=1 
+set foldclose=all
+command! Fold normal zM
 
 "Typewriter mode courtesy of Anthony Wharton
 set scrolloff=999        " Broken Typewriter mode
@@ -64,10 +77,18 @@ let g:gitgutter_sign_modified = '✹'
 let g:gitgutter_sign_removed = '✖'
 command! Stage GitGutterStageHunk
 command! Undo  GitGutterUndoHunk
-highlight link GitGutterAdd Function
-highlight link GitGutterChange Special
-highlight link GitGutterDelete Tag
-highlight link GitGutterChangeDelete Special
+" highlight link GitGutterAdd Function
+" highlight link GitGutterChange Special
+" highlight link GitGutterDelete Tag
+" highlight link GitGutterChangeDelete Special
+autocmd ColorScheme *
+			\ hi GitGutterAdd guifg=#A6E22E guibg=#232526 |
+			\ hi GitGutterChange guifg=#66D9EF guibg=#232526 |
+			\ hi GitGutterDelete guifg=#F92672 guibg=#232526 |
+			\ hi GitGutterChangeDelete guifg=#66D9EF guibg=#232526 |
+			\ hi clear SpellBad |
+			\ hi SpellBad cterm=underline guifg=red
+
 
 
 "Theme
@@ -75,20 +96,9 @@ set termguicolors
 " let g:molokai_original = 1
 colorscheme molokai
 
-"Syntax checking
-"let g:syntastic_python_checkers = ['pylint']
-"let g:syntastic_haskell_checkers = ['hlint']
-"let g:syntastic_tex_checkers=['chktex']
-""If it's not an error we don't care
-"let g:syntastic_quiet_messages = {
-"    \ "!level":  "errors",
-"    \ "type":    "style"}
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 0
-"let g:syntastic_ignore_files = ['NERD_tree*']
-
 "Syntax highlighting
 syntax enable
+syntax spell toplevel
 
 " Enable 256 colors palette in Gnome Terminal
 if $COLORTERM == 'gnome-terminal'
@@ -105,10 +115,6 @@ set ffs=unix,dos,mac
 set nobackup
 set nowb
 set noswapfile
-
-"Color code colorisation
-let g:colorizer_auto_color = 1
-let g:colorizer_colornames = 0
 
 "Hack to allow Alt key use
 let c='a'
@@ -163,37 +169,58 @@ set clipboard=unnamedplus
 "Latex
 let g:tex_flavor = 'latex'
 let g:vimtex_latexmk_continuous = 1
+let g:vimtex_view_general_viewer = 'okular'
+augroup vimtex_config
+  autocmd User VimtexEventInitPost VimtexCompile
+augroup END
 
 "Commenting
 autocmd FileType c setlocal commentstring=//\ %s
 autocmd FileType h setlocal commentstring=//\ %s
 autocmd FileType cpp setlocal commentstring=//\ %s
 autocmd FileType hpp setlocal commentstring=//\ %s
+
+function ClearQuickfixList()
+  call setqflist([])
+endfunction
+
+command! ClearQuickfixList call ClearQuickfixList()
+
+"Spellcheck
+
+autocmd FileType tex setlocal spell spelllang=en_gb
+autocmd FileType txt setlocal spell spelllang=en_gb
+autocmd FileType md setlocal spell spelllang=en_gb
+autocmd BufWritePost *.txt,*.tex,*.md | call ClearQuickfixList() | SpellCheck! | cw
+let g:SpellCheck_DefineAuxiliaryCommands = 0
+let g:SpellCheck_DefineQuickfixMappings = 0
+
 nmap <silent> <C-_>    gcc
 imap <silent> <C-_>    <C-o>gcc
 vmap <silent> <C-_>    gc
 
+"Don't do this, it's bad and break grep:
 "get rid of buffers
-fu! DeleteInactiveBufs()
-	"From tabpagebuflist() help, get a list of all buffers in all tabs
-	let tablist = []
-	for i in range(tabpagenr('$'))
-		call extend(tablist, tabpagebuflist(i + 1))
-	endfor
+"fu! DeleteInactiveBufs()
+"	"From tabpagebuflist() help, get a list of all buffers in all tabs
+"	let tablist = []
+"	for i in range(tabpagenr('$'))
+"		call extend(tablist, tabpagebuflist(i + 1))
+"	endfor
 
-	"Below originally inspired by Hara Krishna Dara and Keith Roberts
-	"http://tech.groups.yahoo.com/group/vim/message/56425
-	let nWipeouts = 0
-	for i in range(1, bufnr('$'))
-		if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
-		"bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
-			silent exec 'bwipeout' i
-			let nWipeouts = nWipeouts + 1
-		endif
-	endfor
-endfunction
+"	"Below originally inspired by Hara Krishna Dara and Keith Roberts
+"	"http://tech.groups.yahoo.com/group/vim/message/56425
+"	let nWipeouts = 0
+"	for i in range(1, bufnr('$'))
+"		if bufexists(i) && !getbufvar(i,"&mod") && index(tablist, i) == -1
+"		"bufno exists AND isn't modified AND isn't in the list of buffers open in windows and tabs
+"			silent exec 'bwipeout' i
+"			let nWipeouts = nWipeouts + 1
+"		endif
+"	endfor
+"endfunction
 
-autocmd WinEnter * call DeleteInactiveBufs()
+" autocmd WinEnter * call DeleteInactiveBufs()
 
 " save/restore
 " set ssop-=options    " do not store global and local values in a session
@@ -223,15 +250,16 @@ autocmd WinEnter * call DeleteInactiveBufs()
 " autocmd VimEnter * call RestoreSess()
 
 "Tabs suck
-nmap <A-1> 1gt
-nmap <A-2> 2gt
-nmap <A-3> 3gt
-nmap <A-4> 4gt
-nmap <A-5> 5gt
-nmap <A-6> 6gt
-nmap <A-7> 7gt
-nmap <A-8> 8gt
-nmap <A-9> 9gt
+"So we'll use buffers
+" nmap <A-1> :BufstopModeFast <ENTER> 1
+" nmap <A-2> :BufstopModeFast <ENTER> 2
+" nmap <A-3> :BufstopModeFast <ENTER> 3
+" nmap <A-4> :BufstopModeFast <ENTER> 4
+" nmap <A-5> :BufstopModeFast <ENTER> 5
+" nmap <A-6> :BufstopModeFast <ENTER> 6
+" nmap <A-7> :BufstopModeFast <ENTER> 7
+" nmap <A-8> :BufstopModeFast <ENTER> 8
+" nmap <A-9> :BufstopModeFast <ENTER> 9
 
 "Don't like wrap by default
 set nowrap
@@ -272,6 +300,7 @@ let g:ycm_collect_identifiers_from_tags_files=1
 "More debug
 let g:ycm_log_level = 'debug'
 "Set to python3 explicitly
+let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 "" start completion from the first character
 let g:ycm_min_num_of_chars_for_completion=1
@@ -281,16 +310,41 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_seed_identifiers_with_syntax=1
 " let g:ycm_show_diagnostics_ui = 0
 let g:ycm_autoclose_preview_window_after_insertion=1
+
+hi YcmErrorSign guifg=#F92672 guibg=#232526
+hi YcmWarningSign guifg=#FD971F guibg=#232526
 " Check on save
-autocmd BufWritePost * silent! YcmForceCompileAndDiagnostics
+autocmd BufWritePost *.c,*.h,*.cpp,*.py call RunCheck()
+
+function RunCheck()
+	YcmForceCompileAndDiagnostics
+	YcmDiags
+	if (youcompleteme#GetErrorCount() == 0 && youcompleteme#GetWarningCount() == 0) | lclose | else | ll | endif
+endfunction
+
+let g:ycm_open_loclist_on_ycm_diags=1
 "Don't show fixit window
-autocmd User YcmQuickFixOpened cclose
+" autocmd User YcmQuickFixOpened cclose
 "Open definition / declaration in new window sometimes
-let g:ycm_goto_buffer_command="new-tab"
+" let g:ycm_goto_buffer_command="new-tab"
+
+function! s:CustomizeYcmLocationWindow()
+  wincmd p
+endfunction
+
+autocmd User YcmLocationOpened call s:CustomizeYcmLocationWindow()
+
 "Commands
 command! Declaration YcmCompleter GoToDeclaration
 command! Definition  YcmCompleter GoToDefinition
+command! References YcmCompleter GoToReferences
+command! Type        YcmComplete GetType
 command! Fix         YcmCompleter FixIt
+
+"Bufstop
+nmap <C-b> :BufstopFast <ENTER>
+let g:BufstopKeys = "asdfgzxcvb"
+
 
 "Fix for garbage in start
 set t_RV=
@@ -306,7 +360,7 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-let g:airline_extensions = ['syntastic', 'vimtex', 'tabline']
+let g:airline_extensions = ['syntastic', 'vimtex', 'tabline', 'ycm']
 
 
 "I enjoy having a hard time

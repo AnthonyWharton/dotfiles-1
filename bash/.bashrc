@@ -71,6 +71,7 @@ function cal() {
 
 alias xclip="xclip -selection c"
 alias dup="gnome-terminal ."
+alias mail-archive="mail -f ~/Mail/mail.mbox"
 
 function open() {
     #do things with parameters like $1 such as
