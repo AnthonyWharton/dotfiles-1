@@ -160,8 +160,25 @@ map <C-n> :NERDTreeToggle<CR>
 "autocmd VimEnter * silent! NERDTree  " Autostart NERDTree
 "autocmd VimEnter * silent! wincmd p  " And then focus on file
 autocmd BufWinEnter * silent! NERDTreeMirror
-autocmd BufEnter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd TabLeave * if bufname('') =~ "Nerd_tree" | wincmd h | endif
+function CheckForAutoClose()
+	if winnr("$") == 1
+		" If NERDTree is open, or quickfix list is open (implying the
+		" only window is not a file) -> do not close
+		if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+		   \ || getwinvar(1, '&syntax') == 'qf'
+			q
+		endif
+	elseif winnr("$") == 2
+		" If NERDTree and quickfix list is open (implying both windows
+		" are not files) -> do not close
+		if (exists("t:NERDTreeBufName") && bufwinnr(t:NERDTreeBufName) != -1)
+		\   &&
+		\  (getwinvar(1, '&syntax') == 'qf' || getwinvar(2, '&syntax') == 'qf')
+			q|q|return
+		endif
+	endif
+endfunction
 
 "Clipboard from system
 set clipboard=unnamedplus
