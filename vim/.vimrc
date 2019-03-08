@@ -41,7 +41,7 @@ set tw=80
 
 set foldmethod=indent
 set foldlevel=0
-set foldnestmax=1 
+set foldnestmax=1
 set foldclose=all
 command! Fold normal zM
 
@@ -49,7 +49,7 @@ command! Fold normal zM
 set scrolloff=999        " Broken Typewriter mode
 
 " Show matching brackets when text indicator is over them
-set showmatch 
+set showmatch
 " How many tenths of a second to blink when matching brackets
 set matchtime=2
 
@@ -208,7 +208,7 @@ command! ClearQuickfixList call ClearQuickfixList()
 autocmd FileType tex setlocal spell spelllang=en_gb
 autocmd FileType txt setlocal spell spelllang=en_gb
 autocmd FileType md setlocal spell spelllang=en_gb
-autocmd BufWritePost *.txt,*.tex,*.md | call ClearQuickfixList() | SpellCheck! | cw
+autocmd BufWritePost *.txt,*.tex,*.md call ClearQuickfixList() | SpellCheck! | cw
 let g:SpellCheck_DefineAuxiliaryCommands = 0
 let g:SpellCheck_DefineQuickfixMappings = 0
 
@@ -365,7 +365,7 @@ let g:BufstopKeys = "asdfgzxcvb"
 
 "Fix for garbage in start
 set t_RV=
-autocmd VimEnter * redraw! 
+autocmd VimEnter * redraw!
 
 " Do menu related stuff
 set wildmode=longest,list
